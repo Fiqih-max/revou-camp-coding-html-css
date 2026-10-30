@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Life Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="dashboard">
+    <header class="hero">
+      <div>
+        <p id="date" class="date"></p>
+        <h1 id="clock" class="clock">00:00</h1>
+        <p id="greeting" class="greeting"></p>
+      </div>
+      <div class="hero-tools">
+        <label class="field">Your name
+          <input id="name-input" type="text" maxlength="30" placeholder="Type your name">
+        </label>
+        <button id="theme-toggle" class="btn ghost" type="button">Dark mode</button>
+      </div>
+    </header>
+
+    <section class="card timer" aria-labelledby="timer-title">
+      <h2 id="timer-title">Focus timer</h2>
+      <p id="timer-display" class="timer-display">25:00</p>
+      <div class="row">
+        <button id="timer-start" class="btn" type="button">Start</button>
+        <button id="timer-stop" class="btn ghost" type="button">Stop</button>
+        <button id="timer-reset" class="btn ghost" type="button">Reset</button>
+      </div>
+      <label class="field inline">Minutes
+        <input id="timer-minutes" type="number" min="1" max="120" value="25">
+      </label>
+    </section>
+
+    <section class="card todo" aria-labelledby="todo-title">
+      <h2 id="todo-title">To-do list</h2>
+      <form id="todo-form" class="row">
+        <input id="todo-input" type="text" placeholder="What needs doing today?" maxlength="120" required>
+        <button class="btn" type="submit">Add task</button>
+      </form>
+      <p id="todo-msg" class="msg" role="status"></p>
+      <ul id="todo-list" class="list"></ul>
+      <p id="todo-empty" class="empty">No tasks yet. Add your first one above.</p>
+    </section>
+
+    <section class="card links" aria-labelledby="links-title">
+      <h2 id="links-title">Quick links</h2>
+      <div id="links-list" class="link-grid"></div>
+      <form id="links-form" class="row stack">
+        <input id="link-name" type="text" placeholder="Name" maxlength="20" required>
+        <input id="link-url" type="text" placeholder="example.com" required>
+        <button class="btn" type="submit">Add link</button>
+      </form>
+    </section>
+  </main>
+  <script src="js/script.js"></script>
+</body>
+</html>

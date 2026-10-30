@@ -1,0 +1,123 @@
+:root {
+  --bg: #eef2ec;
+  --surface: #fbfcfa;
+  --ink: #1f2a24;
+  --muted: #5c6b63;
+  --line: #d3ddd5;
+  --accent: #2f6f5e;
+  --accent-ink: #ffffff;
+  --warm: #e0a33b;
+}
+[data-theme="dark"] {
+  --bg: #121916;
+  --surface: #1b2420;
+  --ink: #e8efe9;
+  --muted: #9aaba1;
+  --line: #2c3a33;
+  --accent: #6cc3a6;
+  --accent-ink: #0f1713;
+  --warm: #e8b75a;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  line-height: 1.5;
+  transition: background .2s, color .2s;
+}
+.dashboard {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 32px 20px 56px;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 20px;
+}
+.hero {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--ink);
+}
+.date { margin: 0; color: var(--muted); font-size: 1rem; }
+.clock { margin: 0; font-size: clamp(4rem, 14vw, 8rem); font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
+.greeting { margin: 8px 0 0; font-size: 1.5rem; font-weight: 600; }
+.hero-tools { display: flex; gap: 12px; align-items: flex-end; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
+}
+.card h2 { margin: 0 0 16px; font-size: 1.15rem; font-weight: 600; }
+.timer { grid-row: span 2; }
+.todo { grid-column: 2; }
+.links { grid-column: 1 / -1; }
+.timer-display {
+  margin: 0 0 16px;
+  font-size: 4.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+.row.stack { margin-top: 16px; }
+.field { display: flex; flex-direction: column; gap: 4px; font-size: .85rem; color: var(--muted); }
+.field.inline { margin-top: 16px; max-width: 120px; }
+input[type="text"], input[type="number"] {
+  font: inherit;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  min-width: 0;
+}
+.row input[type="text"] { flex: 1; }
+input:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid var(--warm); outline-offset: 2px; }
+.btn {
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn:hover { filter: brightness(1.08); }
+.btn.small { padding: 4px 10px; font-size: .85rem; }
+.list { list-style: none; margin: 8px 0 0; padding: 0; }
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.list li .text { flex: 1; word-break: break-word; }
+.list li.done .text { text-decoration: line-through; color: var(--muted); }
+.list li input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--accent); }
+.list li input[type="text"] { flex: 1; }
+.msg { min-height: 1.2em; margin: 8px 0 0; color: var(--warm); font-size: .9rem; }
+.empty { color: var(--muted); margin: 8px 0 0; }
+.link-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.link-chip { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.link-chip a { padding: 8px 14px; color: var(--ink); text-decoration: none; font-weight: 600; }
+.link-chip a:hover { background: var(--accent); color: var(--accent-ink); }
+.link-chip button { border: 0; border-left: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; padding: 0 10px; font: inherit; }
+.link-chip button:hover { color: var(--ink); }
+@media (max-width: 760px) {
+  .dashboard { grid-template-columns: 1fr; }
+  .timer, .todo, .links { grid-column: 1; grid-row: auto; }
+  .timer-display { font-size: 3.5rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
